@@ -1,0 +1,24 @@
+{
+  "name": "my-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.1",
+    "element-plus": "^2.2.2",
+    "html2canvas": "^1.4.1",
+    "less": "^4.1.2",
+    "view-ui-plus": "^1.1.0-beta.2",
+    "vue": "^3.2.25",
+    "vxe-table": "^4.2.4-beta.3",
+    "xe-utils": "^3.5.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.9"
+  }
+}
