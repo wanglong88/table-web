@@ -322,7 +322,7 @@ export default {
   }
 }
 .hideContextMenu {
-  position: absolute;
+  position: absolute !important;
   top: 5px;
   right: 5px;
   cursor: pointer;
