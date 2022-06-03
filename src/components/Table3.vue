@@ -1,11 +1,29 @@
 <template>
-  <div id="hello">
+  <div id="table-page">
     <!-- 表格 -->
-    <div class="vxe-table-box">
-      <h2 style="margin: 0; text-align: center;padding-top: 20px;">邯郸大健康精英俱乐部</h2>
+    <div class="vxe-table-box" ref="tableBox">
+      <h2 style="margin: 0; text-align: center;padding-top: 20px;">
+        <p
+          class="new-text"
+          v-show="!titleShow"
+          @dblclick="titleShow = true"
+        >
+          {{ title }}
+        </p>
+        <el-input
+          style="width:300px"
+          type="textarea"
+          :autosize="{ minRows: 2, maxRows: 4 }"
+          v-show="titleShow"
+          v-model="title"
+          @blur="titleShow = false"
+        >
+        </el-input>
+      </h2>
       <el-table
         :data="testDatas"
         border
+        :scrollbar-always-on="false"
         style="width: 100%; margin-top: 10px"
         @header-contextmenu="(column, event) => rightClick(null, column, event)"
         @row-contextmenu="rightClick"
@@ -22,7 +40,7 @@
             {{ numFun(scope.$index) }}
           </template>
         </el-table-column>
-        <el-table-column label="客户">
+        <el-table-column label="客户" align="center">
           <template #default="scope">
             <p
               class="new-text"
@@ -41,7 +59,7 @@
             </el-input>
           </template>
         </el-table-column>
-        <el-table-column label="总积分" :sortable="true" :sort-method="sortMethod">
+        <el-table-column label="总积分" :sortable="true" :sort-method="sortMethod" :width="100" align="center">
           <template #default="scope">
           {{scope.row.total_pints.content}}
             <!-- {{ totalNum(scope.$index) }} -->
@@ -51,7 +69,8 @@
           <el-table-column
           v-for="(col, idx) in columnList" 
           :key="col.prop"
-            :index="idx"
+          :index="idx"
+          align="center"
           >
             <!-- 自定义表头的内容 -->
             <template #header>
@@ -59,6 +78,8 @@
                 {{ col.label }}
               </p>
               <el-input
+                type="textarea"
+                :autosize="{ minRows: 2, maxRows: 4 }"
                 size="large"
                 v-show="!col.show"
                 v-model="col.label"
@@ -172,6 +193,8 @@ export default {
         colIdx: null, // 列下标
         isHead: undefined, // 当前目标是表头？
       },
+      title: '邯郸大健康精英俱乐部',
+      titleShow: false,
     };
   },
   watch: {
@@ -186,7 +209,6 @@ export default {
             }
           }
           this.testDatas[index]['total_pints']['content'] = num
-          console.log(typeof this.testDatas[index]['total_pints']['content']);
         })
       },
       deep: true
@@ -194,7 +216,14 @@ export default {
   },
   methods: {
     toImage() {
-        html2canvas(document.querySelector('.vxe-table-box')).then((canvas) => {
+      var width = this.$refs.tableBox.style.width
+      var cloneDom = this.$refs.tableBox.cloneNode(true)
+      cloneDom.style.position = 'absolute'
+      cloneDom.style.top = '0px'
+      cloneDom.style.zIndex = '-1'
+      cloneDom.style.width = width
+      document.body.appendChild(cloneDom)
+        html2canvas(cloneDom).then((canvas) => {
           let dataURL = canvas.toDataURL('image/png')
           var a = document.createElement('a') // 生成一个a元素
           var event = new MouseEvent('click') // 创建一个单击事件
@@ -202,6 +231,7 @@ export default {
           a.href = dataURL // 将生成的URL设置为a.href属性
           a.dispatchEvent(event) // 触发a的单击事件
         })
+        cloneDom.style.display = 'none'
       },
     sortMethod(a, b){
     },
@@ -232,10 +262,8 @@ export default {
       const idx = later ? this.curTarget.rowIdx + 1 : this.curTarget.rowIdx;
       let obj = {};
       this.list.forEach((p) => {
-        console.log(p.prop, 'p.prop');
          obj[p.prop] = { content: '', show: true };
       });
-      console.log(this.testDatas, 'this.testDatas22')
       this.testDatas.splice(idx, 0, obj);
     },
     // 删除行
@@ -255,7 +283,6 @@ export default {
         // vue3无需 this.$set(p, obj.col, { content: '', show: true }) // vue2中, 新增的对象无法被监听到
         p[obj.prop] = { content: 0, show: true };
       });
-      console.log(this.testDatas, 'this.testDatas')
     },
     // 删除列
     delColumn() {
@@ -293,16 +320,19 @@ export default {
 </script>
   
 <style lang="less">
+
 .el-textarea__inner {
-  height: 40px !important;
-  min-height: 40px !important;
+  height: 35px !important;
+  line-height: inherit !important;
+  min-height: 35px !important;
 }
+
 .new-text {
   margin: 0;
-  height: 40px;
-  line-height: 40px;
+  min-height: 25px;
+  line-height: inherit;
 }
-#hello {
+#table-page {
   position: relative;
 }
 #contextmenu {
