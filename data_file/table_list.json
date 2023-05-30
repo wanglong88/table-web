@@ -1,0 +1,141 @@
+{
+  "table_list": [
+    {
+      "name": {
+        "content": "张三",
+        "show": true
+      },
+      "total_pints": {
+        "content": 16,
+        "show": true
+      },
+      "drug_1": {
+        "content": 1,
+        "show": true
+      },
+      "drug_2": {
+        "content": 1,
+        "show": true
+      },
+      "drug_3": {
+        "content": 1,
+        "show": true
+      },
+      "row_index": 0,
+      "drug_4": {
+        "content": "6",
+        "show": true
+      },
+      "drug_5": {
+        "content": "6",
+        "show": true
+      },
+      "drug_6": {
+        "content": "1",
+        "show": true
+      }
+    },
+    {
+      "name": {
+        "content": "李四",
+        "show": true
+      },
+      "total_pints": {
+        "content": 23,
+        "show": true
+      },
+      "drug_1": {
+        "content": "6",
+        "show": true
+      },
+      "drug_2": {
+        "content": 2,
+        "show": true
+      },
+      "drug_3": {
+        "content": 2,
+        "show": true
+      },
+      "row_index": 1,
+      "drug_4": {
+        "content": "6",
+        "show": true
+      },
+      "drug_5": {
+        "content": "6",
+        "show": false
+      },
+      "drug_6": {
+        "content": "1",
+        "show": true
+      }
+    },
+    {
+      "name": {
+        "content": "王五",
+        "show": true
+      },
+      "total_pints": {
+        "content": 21,
+        "show": true
+      },
+      "drug_1": {
+        "content": "1",
+        "show": true
+      },
+      "drug_4": {
+        "content": "6",
+        "show": false
+      },
+      "drug_5": {
+        "content": "6",
+        "show": false
+      },
+      "drug_2": {
+        "content": "3",
+        "show": false
+      },
+      "drug_3": {
+        "content": "4",
+        "show": true
+      },
+      "row_index": 2,
+      "drug_6": {
+        "content": "1",
+        "show": true
+      }
+    }
+  ],
+  "table_head": [
+    {
+      "prop": "drug_1",
+      "label": "宝儿安",
+      "show": true
+    },
+    {
+      "prop": "drug_4",
+      "label": "宝儿安add",
+      "show": true
+    },
+    {
+      "prop": "drug_6",
+      "label": "胶囊",
+      "show": true
+    },
+    {
+      "prop": "drug_5",
+      "label": "感康",
+      "show": true
+    },
+    {
+      "prop": "drug_2",
+      "label": "宝儿安",
+      "show": true
+    },
+    {
+      "prop": "drug_3",
+      "label": "宝儿安",
+      "show": true
+    }
+  ]
+}
