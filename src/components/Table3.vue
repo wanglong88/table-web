@@ -136,16 +136,16 @@ export default {
     }
   },
   created() {
-    getJson().then((res) => {
-      console.log(res, 'res');
-      if (res.code == 200) {
-        this.testDatas = res.data.table_list
-        this.columnList = res.data.table_head
-        this.list.splice(2)
-        this.list.push(...res.data.table_head)
-        console.log(this.list, 'this.list');
-      }
-    })
+    // getJson().then((res) => {
+    //   console.log(res, 'res');
+    //   if (res.code == 200) {
+    //     this.testDatas = res.data.table_list
+    //     this.columnList = res.data.table_head
+    //     this.list.splice(2)
+    //     this.list.push(...res.data.table_head)
+    //     console.log(this.list, 'this.list');
+    //   }
+    // })
   },
   methods: {
     seve() {
