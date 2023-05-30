@@ -104,12 +104,8 @@ export default {
         { prop: "drug_2", label: "宝儿安", show: true },
         { prop: "drug_3", label: "宝儿安", show: true },
       ],
-      columnList: [
-
-      ],
-      testDatas: [
-
-      ],
+      columnList: [],
+      testDatas: [],
       count_col: 3,
       showMenu: false,
       curTarget: {
